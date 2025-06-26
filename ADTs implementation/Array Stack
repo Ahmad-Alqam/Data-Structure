@@ -1,0 +1,43 @@
+public class ArrayStack {
+	private int[] stack;
+	private int top;
+	private int size;
+	
+	public ArrayStack(int capacity) {
+		stack = new int[capacity];
+		top = -1;
+		size = 0;
+	}
+	
+	public void push(int element) { //O(1)
+		if(top == stack.length - 1) { //validation
+			return;
+		}
+		stack[++top] = element;
+		size++;
+	}
+	
+	public int pop() { //O(1)
+		if(isEmpty()) { //validation
+			return -1;
+		}
+		size--;
+		return stack[top--];
+	}
+	
+	public int peek(){ //O(1)
+		if(isEmpty()) { //validation
+			return -1;
+		}
+		return stack[top];
+	}
+	
+	public boolean isEmpty() { //O(1)
+		return size == 0;
+	}
+	
+	public int size() { //O(1)
+		return size;
+	}
+	
+}
