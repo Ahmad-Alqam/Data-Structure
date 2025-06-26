@@ -1,0 +1,60 @@
+public class ArrayList {
+	//Time complexity for each method is written beside each method as a comment
+	private int[] arr;
+	private int size;
+	private final int DEF_CAP = 10;
+	
+	public ArrayList() {
+		arr = new int[DEF_CAP];
+		size = 0;
+	}
+	
+	public void resize() { //O(n) where n = arr.length
+		int[] new_arr = new int[arr.length * 2];
+		for(int i = 0 ; i < arr.length ; i++) {
+			new_arr[i] = arr[i];
+		}
+		arr = new_arr;
+	}
+	
+	public void insert(int element) { //O(1)
+		if(size == arr.length) {
+			resize();
+		}
+		arr[size++] = element;
+	}
+	
+	public void delete() { //O(1)
+		if(size == 0) {
+			System.out.println("Array is empty");
+			return;
+		}
+		size--;
+	}
+	
+	public int access(int index) { //O(1)
+		if(index >= 0 && index < size) {
+			return arr[index];
+		}
+		return -1;
+	}
+	
+	public boolean search(int element) { //O(n) where n = size
+		for(int i = 0 ; i < size ; i++) {
+			if(arr[i] == element) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int size() { //O(1)
+		return size;
+	}
+	
+	public void print() { //O(n) where n = size
+		for(int i = 0 ; i < size ; i++) {
+			System.out.print(arr[i] + ", ");
+		}
+	}
+}
