@@ -1,0 +1,51 @@
+class Node {
+	int element;
+	Node next;
+
+	public Node(int element) {
+		this.element = element;
+		this.next = null;
+	}
+}
+
+public class LinkedList_Stack {
+	private Node head;
+	private int size;
+	
+	public LinkedList_Stack() {
+		head = null;
+		size = 0;
+	}
+	
+	public void push(int element) { //O(1)
+		Node new_node = new Node(element);
+		new_node.next = head;
+		head = new_node;
+		size++;
+	}
+	
+	public int pop() { //O(1)
+		if(isEmpty()) { //validation
+			return -1;
+		}
+		int temp = head.element;
+		head = head.next;
+		size--;
+		return temp;
+	}
+	
+	public int peek() { //O(1)
+		if(isEmpty()) { //validation
+			return -1;
+		}
+		return head.element;
+	}
+	
+	public boolean isEmpty() { //O(1)
+		return head == null;
+	}
+	
+	public int size() { //O(1)
+		return size;
+	}
+}
