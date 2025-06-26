@@ -1,0 +1,62 @@
+class Nodes {
+	int element; //data despite its type(string, int, double)
+	Nodes next;
+	
+	public Nodes(int element) {
+		this.element = element;
+		this.next = null;
+	}
+}	
+
+public class LinkedList_Queue {
+	private Nodes front; //head
+	private Nodes rear; //tail
+	private int size;
+	
+	public LinkedList_Queue() {
+		front = rear = null;
+		size = 0;
+	}
+	
+	public void enqueue(int element) { //O(1)
+		Nodes new_node = new Nodes(element);
+		if(!isEmpty()) {
+			rear.next = new_node;
+			rear = new_node;
+		} else {
+			front = rear = new_node;
+		}
+		size++;
+	}
+	
+	public int dequeue() { //O(1)
+		if(isEmpty()) {
+			System.out.println("Queue is empty!!!");
+			return -1;
+		}
+		int dequeued = front.element;
+		front = front.next;
+		if(front == null) { //Queue become empty 
+			rear = null;
+		}
+		size--;
+		return dequeued;
+	}
+	
+	public int peek() { //O(1)
+		if(isEmpty()) {
+			System.out.println("Queue is empty!!!");
+			return -1;
+		}
+		return front.element;
+	}
+	
+	public boolean isEmpty() { //O(1)
+		return size ==0;
+	}
+	
+	public int size() { //O(1)
+		return size;
+	}
+
+}
