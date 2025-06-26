@@ -1,0 +1,52 @@
+public class Array_Queue {
+	private int[] queue;
+	private int front;
+	private int rear;
+	private int size;
+	
+	public Array_Queue(int capacity) {
+		queue = new int[capacity];
+		front = 0;
+		rear = -1;
+		size = 0;
+	}
+	
+	public void enqueue(int element) { //O(1)
+		if(size == queue.length) {
+			System.out.println("Queue is full!!!");
+			return;
+		}
+		rear = (rear + 1) % queue.length;
+		queue[rear] = element;
+		size++;
+	}
+	
+	public int dequeue() { //O(1)
+		if(!isEmpty()) {
+			int dequeued_element = queue[front];
+			front = (front + 1) % queue.length;
+			size--;
+			return dequeued_element;
+		} else {
+			System.out.println("Queue is empty!!!");
+			return -1;
+		}
+	}
+	
+	public int peek() { //O(1)
+		if(isEmpty()) {
+			System.out.println("Queue is empty!!!");
+			return -1;
+		}
+		return queue[front];
+	}
+	
+	public boolean isEmpty() { //O(1)
+		return size == 0;
+	}
+	
+	public int size() { //O(1)
+		return size;
+	}
+	
+}
